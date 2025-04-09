@@ -1,47 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--general infomraion of the webpage-->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chatbot</title>
-    <meta name="author" content="J.C. Chen">
-    <!-- <link rel="stylesheet" href="css/style.css" /> -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- <link rel="shortcut icon" href='favicon.ico' type="image/x-icon">
-    <link rel="icon" href='favicon.ico' type="image/x-icon"> -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-  </head>
-  <!--end general information-->
-  <body>
+<head>
+  <meta charset="UTF-8">
+  <title>LLM Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 40px;
+    }
+    #chat {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #messages {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    .message {
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 15px;
+      max-width: 80%;
+      clear: both;
+    }
+    .user {
+      background: #e6f7ff;
+      float: right;
+      text-align: right;
+    }
+    .bot {
+      background: #e8f5e9;
+      float: left;
+      text-align: left;
+    }
+    form {
+      display: flex;
+      gap: 10px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0074D9;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat">
+    <h2>🤖 LLM Chatbot</h2>
+    <div id="messages"></div>
+    <form id="message-form">
+      <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
 
-    <!-- <header>
-      <div class="color-block"></div>
-    </header> -->
-
-    <!--Chatbot container-->
-    <main>  
-      <div class="chatbot">
-        <div class="chat-header">
-          <h1>My LLM</h1>
-        </div>
-        <div class="header-sub-text">
-          <p>Copyright © JC 2023 - Created by JC with <a class="purple">❤</a></p>
-        </div>
-
-        <div class="spacer" id="messages-container"></div>
-        
-        <form class="chat-form" id="message-form">
-          <textarea type="text" id="message-input" placeholder="Send a message..."></textarea>
-          <button type="submit">➤</button> 
-        </form>
-      </div>
-    </main>
-    <!--end chatbot container-->
-
-    <!--Javascript to call the language model-->
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <!--end Javascript to call the language model-->
-  </body>
+  <!-- ✅ Load external script -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
 </html>
